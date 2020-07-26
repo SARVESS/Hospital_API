@@ -1,7 +1,5 @@
 // require mongoose 
 const mongoose = require('mongoose');
-// require path
-const path = require('path');
 
 // DOCTOR SCHEMA
 const doctorSchema = mongoose.Schema({
@@ -17,7 +15,7 @@ const doctorSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
-    }
+    },
 }, {
     timestamps: true
 });

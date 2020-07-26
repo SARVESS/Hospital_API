@@ -10,7 +10,7 @@ passport.use(new LocalStrategy({
     usernameField: 'username',
     passReqToCallback: true
 },
-    function (username, password, done) {
+    function (req, username, password, done) {
         // find a user and establish the identity
         DOCTOR.findOne({ username: username }, function (err, doctor) {
             if (err) {

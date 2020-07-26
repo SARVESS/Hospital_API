@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
-const doctorData = require('../controllers/doctor');
+const doctorReq = require('../controllers/doctorController');
 
-router.post('/register', doctorData.createDoctor);
+// post req for registering doctor
+router.post('/register', doctorReq.createDoctor);
 
-router.post('/login', doctorData.loginDoctor);
+// authenticated login req
+router.post('/login', passport.authenticate('local', { session:false}), doctorReq.loginDoctor);
 
 module.exports = router;
