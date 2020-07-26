@@ -16,7 +16,7 @@ const reportSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'DOCTOR',
         required: true
-    }
+    },
 
 }, {
     timestamps: true

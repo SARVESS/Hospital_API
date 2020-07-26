@@ -54,6 +54,64 @@ module.exports.registerPatient = async function (req, res) {
 module.exports.createPatientReport = async function(req, res) {
     try{
        let patient = await Patient.findById(req.params.id);
+       if(patient) {
+          let report = await Report.create({
+             status: req.body.status,
+             patient: patient._id,
+             doctor: req.user._id
+          });
+          patient.reports.push(report);
+          patient.save();
+          
+          report = await report.populate('doctor', 'username name').execPopulate();
+          report = await report.populate('patient', 'name phoneNumber').execPopulate();
+          return res.json(200, {
+            status: 200,
+            message: 'Report Created Successfully!',
+            data:{
+               report: report
+            }
+          })
+
+       } else {
+           return res.json(404, {
+               status:404,
+               message: 'Patient not exist!'
+           })
+       }
+    } catch(err) {
+        console.log('Error', err);
+        return res.json(500, {
+            status: 500,
+            message: 'Internal Server Error'
+        })
+    }
+}
+
+// generating all reports of a patient
+module.exports.allReports = async function(req, res) {
+    try{
+        let patient = await Patient.findById(req.params.id);
+        if(patient) {
+            let reports = await Report.find({patient: patient._id}, 'status doctor -_id')
+            .sort('createdAt')
+            .populate('doctor', 'name')   
+            
+            return res.json(200, {
+                status:200,
+                message: 'All reports are here',
+                patient: patient.name,
+                data: {
+                    reports: reports
+                }
+            })
+
+        } else {
+            return res.json(404, {
+                status:404,
+                message: 'Patient not exist!'
+            })
+        }
 
     } catch(err) {
         console.log('Error', err);

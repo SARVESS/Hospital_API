@@ -64,7 +64,7 @@ module.exports.loginDoctor = async function(req, res) {
         return res.json(200, {
             message: 'Login Successful and here is your token',
             data: {
-                jwtToken: jwt.sign(doctor.toJSON(), 'covidHospital', { expiresIn: '100000' })
+                jwtToken: jwt.sign(doctor.toJSON(), 'covidHospital', { expiresIn: '1000000' })
             } 
         });
 
