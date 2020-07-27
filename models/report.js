@@ -17,9 +17,10 @@ const reportSchema = mongoose.Schema({
         ref: 'DOCTOR',
         required: true
     },
-
-}, {
-    timestamps: true
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const Report = mongoose.model('Report', reportSchema);
