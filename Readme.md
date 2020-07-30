@@ -22,14 +22,14 @@ HOSPITAL-API designed for maintaining and creating the reports of status(whether
 
 ### Starting Server
 
-Start the server using command:
-```
-npm start
-```
+   Start the server using command:
+   ```
+   npm start
+   ```
 ### API and end points
 
-Open Postman and there you can hit differents api's
-Base URL to be used before every api requests
+<p> Open Postman and there you can hit differents api's </p>
+<p> Base URL to be used before every api requests </p>
 ```
 localhost:6000/api/v1
 ```
@@ -41,13 +41,13 @@ localhost:6000/api/v1
 3. */patients/register* - POST request to register patients in hospital you have to provide his/her phoneNumber and name in body and when you get status as 200 you can use 
    patients phoneNumber as id to craeate his/her report.
 
-4. */patients/:id/create_report - POST request to create the report for any specific patient, you have to provide his/her id that is phoneNumber in params and status in body
+4. */patients/:id/create_report* - POST request to create the report for any specific patient, you have to provide his/her id that is phoneNumber in params and status in body
    and you can only give one out of these four status as-
    *Negative*, *Travelled-Quarantine*, *Symptoms-Quarantine*, *Positive-Admit*
 
-5. */patients/:id/all_reports - GET request to get all reports of a specific patient till date,you have to provide his/her id that is phoneNumber by which he/she is registered.
+5. */patients/:id/all_reports* - GET request to get all reports of a specific patient till date,you have to provide his/her id that is phoneNumber by which he/she is registered.
 
-6. */reports/:status - GET request to get all reports of a specific status till date, you have to provide status in params out of the four mentioned above.
+6. */reports/:status* - GET request to get all reports of a specific status till date, you have to provide status in params out of the four mentioned above.
 
 ## Versioning
 
@@ -56,7 +56,7 @@ We use Version-1 of api and can improve further in future according to our needs
 ## Directory Structure
 
 1. *config*: Contains all config files like passport strategy files and mongoose files.
-2. *controllers": It Contains all the api files from where all the operations take place like registering and creating reports.
+2. *controllers*: It Contains all the api files from where all the operations take place like registering and creating reports.
 3. *models*: Contains all Schema files or how our doctor,patients and reports are going to look in database.
 4. *routes*: It contains all the routes to forward the api requests to controllers and contains different routes for doctors, patients and reports.
 
