@@ -1,9 +1,10 @@
 // require report model
-const Report = require('../models/report');
+const Report = require('../../../models/report');
 
 // status only within this array
 let arrayStatus = ['Negative', 'Travelled-Quarantine', 'Symptoms-Quarantine', 'Positive-Admit'];
 
+// get all reports of specific status
 module.exports.statusReports = async function (req, res) {
     try {
         let status = req.params.status;

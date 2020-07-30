@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 
 // requiring patient controller
-const patientReq = require('../controllers/patientController');
+const patientReq = require('../../../controllers/api/v1/patientApi');
 
 // post req to register patient
 router.post('/register', passport.authenticate('jwt', {session: false}), patientReq.registerPatient);

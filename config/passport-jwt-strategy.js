@@ -7,7 +7,7 @@ const DOCTOR = require('../models/doctor');
 
 let opts = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'covidHospital'
+    secretOrKey: process.env.JWT_SECRET_KEY
 }
 
 // authenticate using passport-jwt

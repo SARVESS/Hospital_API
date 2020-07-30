@@ -1,7 +1,7 @@
 // require patient model
-const Patient = require('../models/patient');
+const Patient = require('../../../models/patient');
 // require report model
-const Report = require('../models/report');
+const Report = require('../../../models/report');
 
 // status only within this array
 let arrayStatus = ['Negative', 'Travelled-Quarantine', 'Symptoms-Quarantine', 'Positive-Admit'];
@@ -18,7 +18,7 @@ module.exports.registerPatient = async function (req, res) {
             console.log('Patient Registered Successfully!');
             return res.json(200, {
                 status: 200,
-                message: 'Patient Registered Successfully!',
+                message: 'Patient Registered Successfully, and phoneNumber is his/her unique id',
                 data: {
                     patient: {
                         _id: patient1.id,
@@ -56,7 +56,7 @@ module.exports.registerPatient = async function (req, res) {
 // creating patient report 
 module.exports.createPatientReport = async function (req, res) {
     try {
-        let patient = await Patient.findById(req.params.id);
+        let patient = await Patient.findOne({ phoneNumber: req.params.id });
         if (patient) {
             let flag = false;
             for (let i = 0; i < arrayStatus.length; i++) {
@@ -105,16 +105,18 @@ module.exports.createPatientReport = async function (req, res) {
 // generating all reports of a patient
 module.exports.allReports = async function (req, res) {
     try {
-        let patient = await Patient.findById(req.params.id);
+        let patient = await Patient.findOne({ phoneNumber: req.params.id });
         if (patient) {
             let reports = await Report.find({ patient: patient._id }, 'status doctor date -_id')
                 .sort('createdAt')
                 .populate('doctor', 'username name -_id')
+                
 
             return res.json(200, {
                 status: 200,
                 message: 'All reports are here',
                 patientName: patient.name,
+                phoneNumber: patient.phoneNumber,
                 data: {
                     reports: reports
                 }

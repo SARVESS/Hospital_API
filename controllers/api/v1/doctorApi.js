@@ -1,8 +1,8 @@
-const DOCTOR = require('../models/doctor');
+const DOCTOR = require('../../../models/doctor');
 const jwt = require('jsonwebtoken');
-const { findOne } = require('../models/doctor');
+const { findOne } = require('../../../models/doctor');
 
-// create doctor in db
+// create doctor in db and register
 module.exports.createDoctor = async function (req, res) {
     if (req.body.password != req.body.confirm_password) {
         console.log('passwords did not match!');
@@ -64,7 +64,7 @@ module.exports.loginDoctor = async function(req, res) {
         return res.json(200, {
             message: 'Login Successful and here is your token',
             data: {
-                jwtToken: jwt.sign(doctor.toJSON(), 'covidHospital', { expiresIn: '100000' })
+                jwtToken: jwt.sign(doctor.toJSON(), process.env.JWT_SECRET_KEY, { expiresIn: '100000' })
             } 
         });
 
