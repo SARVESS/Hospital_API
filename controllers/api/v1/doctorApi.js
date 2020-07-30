@@ -36,6 +36,13 @@ module.exports.createDoctor = async function (req, res) {
             return res.json(409, {
                 status: 409,
                 message: 'Doctor already exists!',
+                data: {
+                    doctor: {
+                        _id: doctor.id,
+                        name: doctor.name,
+                        username: doctor.username
+                    }
+                }
             })
         }
 
