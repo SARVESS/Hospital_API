@@ -28,7 +28,7 @@ HOSPITAL-API designed for maintaining and creating the reports of status(whether
    ```
 ### API and end points
 
-<p> Open Postman and there you can hit differents api's </p>
+ Open Postman and there you can hit differents api's. 
  Base URL to be used before every api requests 
 ```
 localhost:6000/api/v1
