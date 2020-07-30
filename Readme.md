@@ -1,0 +1,63 @@
+# Project Title
+
+HOSPITAL-API designed for maintaining and creating the reports of status(whether he/she is negative, positive or need to quarantine) of patients for any Hospital.
+
+## Prerequisites
+
+1. You need to install NodeJs and MongoDB before running this project.
+2. Install them according to your Operating System.
+
+### Getting Started
+
+1. Clone this Project
+2. Go to cloned project directory of it with cd and open terminal. 
+3. To install required dependencies run command:
+   ```
+   npm install
+   ```
+4. To install nodemon run command:
+   ```
+   npm install nodemon 
+   ```
+
+### Starting Server
+
+Start the server using command:
+```
+npm start
+```
+### API and end points
+
+Open Postman and there you can hit differents api's
+Base URL to be used before every api requests
+```
+localhost:6000/api/v1
+```
+1. */doctors/register* - POST request to create and register doctor you have to give username, password, confirm_password and name in body and select x-www-form-urlencoded.
+
+2. */doctors/login* - POST request to login the doctor in app you have to provide correct username and password in body and select x-www-form-urlencoded and copy jwtToken 
+   that you will get in data part in postman for further api requests.
+
+3. */patients/register* - POST request to register patients in hospital you have to provide his/her phoneNumber and name in body and when you get status as 200 you can use 
+   patients phoneNumber as id to craeate his/her report.
+
+4. */patients/:id/create_report - POST request to create the report for any specific patient, you have to provide his/her id that is phoneNumber in params and status in body
+   and you can only give one out of these four status as-
+   *Negative*, *Travelled-Quarantine*, *Symptoms-Quarantine*, *Positive-Admit*
+
+5. */patients/:id/all_reports - GET request to get all reports of a specific patient till date,you have to provide his/her id that is phoneNumber by which he/she is registered.
+
+6. */reports/:status - GET request to get all reports of a specific status till date, you have to provide status in params out of the four mentioned above.
+
+## Versioning
+
+We use Version-1 of api and can improve further in future according to our needs.
+
+## Directory Structure
+
+1. *config*: Contains all config files like passport strategy files and mongoose files.
+2. *controllers": It Contains all the api files from where all the operations take place like registering and creating reports.
+3. *models*: Contains all Schema files or how our doctor,patients and reports are going to look in database.
+4. *routes*: It contains all the routes to forward the api requests to controllers and contains different routes for doctors, patients and reports.
+
+
