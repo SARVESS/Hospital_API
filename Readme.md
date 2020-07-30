@@ -4,7 +4,7 @@ HOSPITAL-API designed for maintaining and creating the reports of status(whether
 
 ## Prerequisites
 
-1. You need to install NodeJs and MongoDB before running this project.
+1. You need to install NodeJs and MongoDB and Postman before running this project.
 2. Install them according to your Operating System.
 
 ### Getting Started
@@ -40,7 +40,7 @@ localhost:6000/api/v1
    that you will get in data part in postman for further api requests.
 
 3. `/patients/register` - POST request to register patients in hospital, you have to provide his/her phoneNumber, name in body,and have to set key in Headers as Authorization
-    and value as `Bearer copiedtoekn` and when you get status code as 200, you have to use id as his/her phoneNumber.
+    and value as `Bearer copiedtoken` and when you get status code as 200, you have to use id as his/her phoneNumber.
 
 4. `/patients/:id/create_report` - POST request to create the report for any specific patient, you have to provide his/her id that is phoneNumber in params, status in body
     and have to set key in Headers as Authorization  and value as `Bearer copiedtoken` and you can only give one out of these four status as-
@@ -62,5 +62,7 @@ We have use version-1 of api so that we can upgrade further in future according 
 2. `controllers`: It Contains all the api files from where all the operations take place like registering and creating reports.
 3. `models`: Contains all Schema files or how our doctor,patients and reports are going to look in database.
 4. `routes`: It contains all the routes to forward the api requests to controllers and contains different routes for doctors, patients and reports.
+
+
 
 
