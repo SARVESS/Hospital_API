@@ -29,12 +29,11 @@ HOSPITAL-API designed for maintaining and creating the reports of status(whether
 ### API and end points
 
 <p> Open Postman and there you can hit differents api's </p>
-<p> Base URL to be used before every api requests </p>
-<p>
+ Base URL to be used before every api requests 
 ```
 localhost:6000/api/v1
 ```
-</p>
+
 1. */doctors/register* - POST request to create and register doctor you have to give username, password, confirm_password and name in body and select x-www-form-urlencoded.
 
 2. */doctors/login* - POST request to login the doctor in app you have to provide correct username and password in body and select x-www-form-urlencoded and copy jwtToken 
