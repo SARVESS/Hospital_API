@@ -76,5 +76,4 @@ module.exports.loginDoctor = async function(req, res) {
         });
     }
 
-
 }

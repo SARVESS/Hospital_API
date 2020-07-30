@@ -25,7 +25,7 @@ module.exports.statusReports = async function (req, res) {
                 reports: reports
             });
         } else {
-            return res.json(500, {
+            return res.json(500, { 
                 status: 500,
                 message: 'Enter correct status!'
             })

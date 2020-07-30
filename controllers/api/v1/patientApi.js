@@ -26,7 +26,6 @@ module.exports.registerPatient = async function (req, res) {
                         phoneNumber: patient1.phoneNumber
                     }
                 }
-
             })
         } else {
             console.log('Patient already exists!')
